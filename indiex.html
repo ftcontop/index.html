@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLASSIFIED FILES - COUNTDOWN</title>
+    <title>🔒 CLASSIFIED FILES - LOCKED</title>
     <style>
         * {
             margin: 0;
@@ -13,174 +13,156 @@
 
         body {
             font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
-            color: #ff0000;
+            background: #000;
+            color: #0f0;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
+            padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
-            width: 90%;
-            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 60px;
-            animation: glitch 2s infinite;
-        }
-
-        @keyframes glitch {
-            0%, 100% { text-shadow: 2px 2px #ff0000, -2px -2px #00ff00; }
-            50% { text-shadow: -2px -2px #ff0000, 2px 2px #00ff00; }
+            margin-bottom: 50px;
+            border: 3px solid #f00;
+            padding: 30px;
+            background: rgba(255, 0, 0, 0.1);
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
+            color: #f00;
             letter-spacing: 5px;
             margin-bottom: 10px;
-            color: #ff0000;
-            text-transform: uppercase;
+            text-shadow: 0 0 10px #f00;
         }
 
-        .subtitle {
+        .warning {
+            color: #ff0;
             font-size: 1.2em;
-            color: #ff6666;
-            letter-spacing: 3px;
+            margin-top: 10px;
         }
 
-        .file-section {
-            background: rgba(255, 0, 0, 0.05);
-            border: 2px solid #ff0000;
-            border-radius: 10px;
-            padding: 40px;
+        .file-box {
+            border: 2px solid #0f0;
+            padding: 30px;
             margin: 30px 0;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            background: rgba(0, 255, 0, 0.05);
+            position: relative;
         }
 
-        .file-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
-        }
-
-        .file-title {
-            font-size: 2em;
-            color: #ff3333;
+        .file-name {
+            font-size: 1.8em;
+            color: #0ff;
             margin-bottom: 20px;
             text-align: center;
-            letter-spacing: 3px;
         }
 
-        .countdown {
+        .status-bar {
+            text-align: center;
+            padding: 15px;
+            background: #111;
+            border: 2px solid #f00;
+            margin: 20px 0;
+            font-size: 1.3em;
+        }
+
+        .locked {
+            color: #f00;
+        }
+
+        .unlocked {
+            color: #0f0;
+        }
+
+        .timer {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             margin: 30px 0;
             flex-wrap: wrap;
         }
 
-        .countdown-item {
-            text-align: center;
-            background: rgba(255, 0, 0, 0.1);
+        .time-box {
+            background: #111;
+            border: 2px solid #0ff;
             padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #ff0000;
             min-width: 100px;
+            text-align: center;
         }
 
-        .countdown-number {
+        .time-num {
             font-size: 3em;
+            color: #0ff;
             font-weight: bold;
-            color: #ff0000;
             display: block;
         }
 
-        .countdown-label {
+        .time-label {
+            color: #0f0;
             font-size: 0.9em;
-            color: #ff6666;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-top: 5px;
         }
 
-        .status {
-            text-align: center;
-            font-size: 1.5em;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255, 0, 0, 0.1);
-            border-radius: 5px;
-            letter-spacing: 2px;
-        }
-
-        .locked {
-            color: #ff0000;
-        }
-
-        .unlocked {
-            color: #00ff00;
-        }
-
-        .file-link {
+        .download-btn {
             display: block;
-            text-align: center;
-            margin-top: 20px;
-            padding: 15px 30px;
-            background: #ff0000;
+            width: 100%;
+            padding: 20px;
+            font-size: 1.5em;
+            font-family: 'Courier New', monospace;
+            background: #f00;
             color: #000;
+            border: none;
+            cursor: pointer;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
+            text-align: center;
             font-weight: bold;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            transition: all 0.3s;
         }
 
-        .file-link:hover {
+        .download-btn:hover {
             background: #ff3333;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 20px #f00;
         }
 
-        .file-link.disabled {
-            background: #660000;
-            color: #330000;
+        .download-btn.disabled {
+            background: #333;
+            color: #666;
             cursor: not-allowed;
             pointer-events: none;
         }
 
-        .warning {
-            text-align: center;
-            margin-top: 40px;
+        .notice {
+            background: #111;
+            border: 2px solid #ff0;
             padding: 20px;
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid #ff0000;
-            border-radius: 5px;
-            font-size: 0.9em;
-            color: #ff6666;
-            letter-spacing: 1px;
+            margin-top: 40px;
+            color: #ff0;
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             h1 {
+                font-size: 1.8em;
+            }
+
+            .file-name {
+                font-size: 1.3em;
+            }
+
+            .time-num {
                 font-size: 2em;
             }
 
-            .file-title {
-                font-size: 1.5em;
-            }
-
-            .countdown-number {
-                font-size: 2em;
-            }
-
-            .file-section {
-                padding: 20px;
+            .time-box {
+                min-width: 80px;
+                padding: 15px;
             }
         }
     </style>
@@ -189,149 +171,139 @@
     <div class="container">
         <div class="header">
             <h1>🔒 CLASSIFIED FILES</h1>
-            <p class="subtitle">RESTRICTED ACCESS - COUNTDOWN ACTIVE</p>
+            <p class="warning">⚠️ RESTRICTED ACCESS - COUNTDOWN ACTIVE ⚠️</p>
         </div>
 
-        <!-- File 1: Izaiah Alise -->
-        <div class="file-section">
-            <div class="file-title">📁 IZAIAH ALISE FILE</div>
+        <!-- FILE 1 -->
+        <div class="file-box">
+            <div class="file-name">📁 IZAIAH ALISE FILE</div>
             
-            <div id="status1" class="status locked">
-                🔒 LOCKED - AWAITING RELEASE
+            <div class="status-bar">
+                <span id="status1" class="locked">🔒 LOCKED - AWAITING RELEASE</span>
             </div>
 
-            <div class="countdown" id="countdown1">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours1">--</span>
-                    <span class="countdown-label">Hours</span>
+            <div class="timer">
+                <div class="time-box">
+                    <span class="time-num" id="hours1">24</span>
+                    <div class="time-label">HOURS</div>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes1">--</span>
-                    <span class="countdown-label">Minutes</span>
+                <div class="time-box">
+                    <span class="time-num" id="mins1">00</span>
+                    <div class="time-label">MINUTES</div>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds1">--</span>
-                    <span class="countdown-label">Seconds</span>
+                <div class="time-box">
+                    <span class="time-num" id="secs1">00</span>
+                    <div class="time-label">SECONDS</div>
                 </div>
             </div>
 
-            <a href="https://gofile.io/d/li3d3A" id="link1" class="file-link disabled">
-                ACCESS FILES
+            <a href="https://gofile.io/d/li3d3A" id="btn1" class="download-btn disabled">
+                🔒 ACCESS DENIED
             </a>
         </div>
 
-        <!-- File 2: Briggs and Aayliah Cox -->
-        <div class="file-section">
-            <div class="file-title">📁 BRIGGS AND AAYLIAH COX FILE</div>
+        <!-- FILE 2 -->
+        <div class="file-box">
+            <div class="file-name">📁 BRIGGS AND AAYLIAH COX FILE</div>
             
-            <div id="status2" class="status locked">
-                🔒 LOCKED - AWAITING RELEASE
+            <div class="status-bar">
+                <span id="status2" class="locked">🔒 LOCKED - AWAITING RELEASE</span>
             </div>
 
-            <div class="countdown" id="countdown2">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours2">--</span>
-                    <span class="countdown-label">Hours</span>
+            <div class="timer">
+                <div class="time-box">
+                    <span class="time-num" id="hours2">24</span>
+                    <div class="time-label">HOURS</div>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes2">--</span>
-                    <span class="countdown-label">Minutes</span>
+                <div class="time-box">
+                    <span class="time-num" id="mins2">00</span>
+                    <div class="time-label">MINUTES</div>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds2">--</span>
-                    <span class="countdown-label">Seconds</span>
+                <div class="time-box">
+                    <span class="time-num" id="secs2">00</span>
+                    <div class="time-label">SECONDS</div>
                 </div>
             </div>
 
-            <a href="https://gofile.io/d/li3d3A" id="link2" class="file-link disabled">
-                ACCESS FILES
+            <a href="https://gofile.io/d/li3d3A" id="btn2" class="download-btn disabled">
+                🔒 ACCESS DENIED
             </a>
         </div>
 
-        <div class="warning">
-            ⚠️ WARNING: These files will be automatically unlocked after the countdown reaches zero.<br>
-            Countdown started when you first opened this page.<br>
-            DO NOT REFRESH or you will reset the timer!
+        <div class="notice">
+            ⚠️ FILES WILL UNLOCK IN 24 HOURS FROM YOUR FIRST VISIT<br>
+            ⚠️ DO NOT REFRESH OR TIMER RESETS!
         </div>
     </div>
 
     <script>
-        // Set countdown duration (24 hours in milliseconds)
-        const COUNTDOWN_DURATION = 24 * 60 * 60 * 1000;
+        // 24 hours in milliseconds
+        const LOCKTIME = 24 * 60 * 60 * 1000;
 
-        // Get or set the unlock time for each file
-        function getUnlockTime(fileId) {
-            const storageKey = `unlockTime_${fileId}`;
-            let unlockTime = localStorage.getItem(storageKey);
+        function getUnlockTime(fileNum) {
+            const key = 'unlock_' + fileNum;
+            let time = localStorage.getItem(key);
             
-            if (!unlockTime) {
-                // First visit - set unlock time to 24 hours from now
-                unlockTime = Date.now() + COUNTDOWN_DURATION;
-                localStorage.setItem(storageKey, unlockTime);
+            if (!time) {
+                time = Date.now() + LOCKTIME;
+                localStorage.setItem(key, time);
             }
             
-            return parseInt(unlockTime);
+            return parseInt(time);
         }
 
-        // Update countdown display
-        function updateCountdown(fileId) {
-            const unlockTime = getUnlockTime(fileId);
+        function updateTimer(fileNum) {
+            const unlockTime = getUnlockTime(fileNum);
             const now = Date.now();
-            const timeLeft = unlockTime - now;
+            const diff = unlockTime - now;
 
-            const hoursEl = document.getElementById(`hours${fileId}`);
-            const minutesEl = document.getElementById(`minutes${fileId}`);
-            const secondsEl = document.getElementById(`seconds${fileId}`);
-            const statusEl = document.getElementById(`status${fileId}`);
-            const linkEl = document.getElementById(`link${fileId}`);
+            const hours = document.getElementById('hours' + fileNum);
+            const mins = document.getElementById('mins' + fileNum);
+            const secs = document.getElementById('secs' + fileNum);
+            const status = document.getElementById('status' + fileNum);
+            const btn = document.getElementById('btn' + fileNum);
 
-            if (timeLeft <= 0) {
-                // Countdown finished - unlock!
-                hoursEl.textContent = '00';
-                minutesEl.textContent = '00';
-                secondsEl.textContent = '00';
+            if (diff <= 0) {
+                // UNLOCKED!
+                hours.textContent = '00';
+                mins.textContent = '00';
+                secs.textContent = '00';
                 
-                statusEl.textContent = '🔓 UNLOCKED - ACCESS GRANTED';
-                statusEl.className = 'status unlocked';
+                status.textContent = '🔓 UNLOCKED - ACCESS GRANTED';
+                status.className = 'unlocked';
                 
-                linkEl.classList.remove('disabled');
-                linkEl.textContent = '🔓 ACCESS FILES NOW';
+                btn.textContent = '🔓 DOWNLOAD FILES';
+                btn.classList.remove('disabled');
             } else {
-                // Calculate time remaining
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                // Still locked
+                const h = Math.floor(diff / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-                // Update display
-                hoursEl.textContent = String(hours).padStart(2, '0');
-                minutesEl.textContent = String(minutes).padStart(2, '0');
-                secondsEl.textContent = String(seconds).padStart(2, '0');
+                hours.textContent = String(h).padStart(2, '0');
+                mins.textContent = String(m).padStart(2, '0');
+                secs.textContent = String(s).padStart(2, '0');
             }
         }
 
-        // Initialize countdowns
-        function initCountdowns() {
-            // File 1
-            updateCountdown(1);
-            setInterval(() => updateCountdown(1), 1000);
-
-            // File 2
-            updateCountdown(2);
-            setInterval(() => updateCountdown(2), 1000);
+        // Update both files
+        function update() {
+            updateTimer(1);
+            updateTimer(2);
         }
 
-        // Start when page loads
-        window.addEventListener('load', initCountdowns);
+        // Start
+        update();
+        setInterval(update, 1000);
 
-        // Warn before refresh
-        window.addEventListener('beforeunload', function (e) {
-            // Don't show warning if files are already unlocked
+        // Warn before leaving
+        window.addEventListener('beforeunload', function(e) {
             const file1Unlocked = Date.now() >= getUnlockTime(1);
             const file2Unlocked = Date.now() >= getUnlockTime(2);
             
             if (!file1Unlocked || !file2Unlocked) {
                 e.preventDefault();
-                e.returnValue = 'WARNING: Refreshing will reset your countdown timer!';
+                e.returnValue = 'WARNING: Refreshing will reset the timer!';
             }
         });
     </script>
